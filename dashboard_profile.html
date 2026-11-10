@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Sekolah</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    color: #243247;
+}
+
+/* NAVBAR */
+header {
+    background: #687483;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+nav button:hover,
+nav button.active {
+    background: #ffffff25;
+}
+
+/* HALAMAN */
+.page {
+    display: none;
+    min-height: 80vh;
+    animation: fade .3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* HOME */
+.hero {
+    min-height: 470px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+    linear-gradient(90deg, #102f59eF, #102f5950),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 43px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: #ffc857;
+    color: #123b70;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* CONTENT */
+.container {
+    padding: 55px 8%;
+}
+
+.title {
+    text-align: center;
+    color: #123b70;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.description {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    color: #667085;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    padding: 28px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px #0000000c;
+}
+
+.card h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #123b70;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #667085;
+    line-height: 1.6;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.register {
+    text-align: center;
+    background: #687483;
+    color: white;
+    padding: 60px 20px;
+    border-radius: 15px;
+}
+
+.register h1 {
+    margin-bottom: 15px;
+}
+
+.register p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.contact-info {
+    text-align: center;
+    line-height: 2.2;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #0b274a;
+    color: white;
+    margin-top: 30px;
+}
+
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .container {
+        padding: 40px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">
+    <img src="logo-lembaga.png">MAK AL-IKHLAS
+    </div>
+
+    <nav>
+        <button class="active" onclick="showPage('home',this)">Home</button>
+        <button onclick="showPage('profil',this)">Profil</button>
+        <button onclick="showPage('keunggulan',this)">Keunggulan</button>
+        <button onclick="showPage('galeri',this)">Galeri</button>
+        <button onclick="showPage('daftar',this)">Pendaftaran</button>
+        <button onclick="showPage('kontak',this)">Kontak</button>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="page active" id="home">
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Sekolah MAK AL-Ikhlas!</h1>
+
+            <p>
+                Tempat terbaik untuk belajar, berkembang,
+                berkarya, dan meraih masa depan yang cerah.
+            </p>
+
+            <button class="btn"
+            onclick="showPage('profil')">
+                Jelajahi Sekolah →
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="title">Mengapa Memilih Kami?</h2>
+
+        <p class="description">
+            Kami berkomitmen memberikan pendidikan
+            berkualitas untuk menciptakan generasi
+            yang cerdas dan berkarakter.
+        </p>
+    </div>
+</div>
+
+<!-- PROFIL -->
+<div class="page" id="profil">
+    <div class="container">
+
+        <h1 class="title">Profil Sekolah</h1>
+
+        <p class="description">
+            Sekolah kami merupakan lembaga pendidikan
+            yang berkomitmen mengembangkan potensi
+            akademik dan non-akademik setiap siswa.
+
+            Kami menciptakan lingkungan belajar
+            yang nyaman, disiplin, dan kreatif.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h1>🎓</h1>
+                <h3>Visi</h3>
+                <p>Menjadi sekolah unggul dan berprestasi.</p>
+            </div>
+
+            <div class="card">
+                <h1>📖</h1>
+                <h3>Misi</h3>
+                <p>Mengembangkan pendidikan berkualitas.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- KEUNGGULAN -->
+<div class="page" id="keunggulan">
+    <div class="container">
+
+        <h1 class="title">Keunggulan Sekolah</h1>
+
+        <div class="cards">
+
+            <div class="card">
+                <h1>📚</h1>
+                <h3>Pendidikan Berkualitas</h3>
+                <p>Pembelajaran yang mendukung siswa.</p>
+            </div>
+
+            <div class="card">
+                <h1>💻</h1>
+                <h3>Fasilitas Modern</h3>
+                <p>Fasilitas untuk menunjang kegiatan belajar.</p>
+            </div>
+
+            <div class="card">
+                <h1>🏆</h1>
+                <h3>Prestasi</h3>
+                <p>Mendukung siswa meraih berbagai prestasi.</p>
+            </div>
+
+            <div class="card">
+                <h1>🤝</h1>
+                <h3>Ekstrakurikuler</h3>
+                <p>Tempat mengembangkan bakat dan minat.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- GALERI -->
+<div class="page" id="galeri">
+    <div class="container">
+
+        <h1 class="title">Galeri Sekolah</h1>
+
+        <p class="description">
+            Dokumentasi kegiatan dan lingkungan sekolah kami.
+        </p>
+
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1">
+            <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5">
+        </div>
+
+    </div>
+</div>
+
+<!-- PENDAFTARAN -->
+<div class="page" id="daftar">
+    <div class="container">
+
+        <div class="register">
+            <h1>Penerimaan Siswa Baru!</h1>
+
+            <p>
+                Mari bergabung bersama keluarga besar
+                sekolah kami dan wujudkan masa depan
+                yang lebih cerah.
+            </p>
+
+            <button class="btn"
+            onclick="showPage('kontak')">
+                Informasi Pendaftaran
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- KONTAK -->
+<div class="page" id="kontak">
+    <div class="container">
+
+        <h1 class="title">Hubungi Kami</h1>
+
+        <div class="card contact-info">
+            <h3>Informasi Sekolah</h3>
+
+            <p>📍 Alamat: Madrasah Al-Ikhlas doyo baru bambar</p>
+            <p>📱 WhatsApp: 08xxxxxxxxxx</p>
+            <p>📧 Email: sekolah@email.com</p>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 MAK AL-IKHLAS</p>
+    <p>Membangun Generasi Masa Depan.</p>
+</footer>
+
+<script>
+function showPage(pageId, button) {
+
+    // Sembunyikan semua halaman
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Tampilkan halaman yang dipilih
+    document.getElementById(pageId).classList.add('active');
+
+    // Hapus status aktif dari semua tombol
+    document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Aktifkan tombol yang dipilih
+    if(button) {
+        button.classList.add('active');
+    } else {
+        document.querySelectorAll('nav button').forEach(btn => {
+            if(btn.textContent.trim() ===
+            pageId.charAt(0).toUpperCase() + pageId.slice(1)) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Kembali ke atas
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
