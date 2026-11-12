@@ -1,7 +1,7 @@
 
 <div align="center">
 
-<img src="logo-lembaga.png" width="180" alt="Logo Sekolah">
+<img src="logo-sekolah.png" width="180" alt="Logo Sekolah">
 
 # Dashboard Sekolah
 
